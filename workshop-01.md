@@ -104,46 +104,6 @@ git config --global user.name "Tu Nombre"
 # Configurar email
 git config --global user.email "tu@email.com"
 
-# Configurar editor
-git config --global core.editor "code --wait"
-```
-
----
-
-# Verificando credenciales de GitHub
-
-```bash
-# Verificar la configuración actual de usuario
-git config --global user.name
-git config --global user.email
-
-# Comprobar si hay credenciales almacenadas
-git credential-manager list    # Windows
-git credential-osxkeychain get # macOS
-
-# En Linux/Ubuntu:
-ls -la ~/.git-credentials      # Si usas almacenamiento en texto plano
-# Si no existe, puede que estés usando otro método como:
-git config --global credential.helper   # Ver qué helper estás usando
-
-# Comprobar configuración de credenciales en Linux:
-git config --list | grep credential
-
-# AWS CodeCommit (si estás usando repositorios de AWS)
-git config --global credential.helper '!aws codecommit credential-helper $@'
-git config --global credential.UseHttpPath true
-aws codecommit list-repositories  # Verificar acceso a repositorios
-
-# Probar la conexión SSH con GitHub (si usas SSH en lugar de HTTPS)
-ssh -T git@github.com
-
-# Configurar almacenamiento de credenciales
-git config --global credential.helper cache   # Temporal (15 min por defecto)
-git config --global credential.helper 'cache --timeout=3600'  # 1 hora
-
-# En caso de problemas, regenerar token o clave SSH
-# Y configurar de nuevo:
-git config --global credential.helper store    # Guarda en texto plano (menos seguro)
 ```
 
 ---
@@ -294,15 +254,6 @@ git commit -m "docs: actualizar README con instrucciones de instalación"
 - **❓ Ask**: Cambios que requieren discusión y aprobación formal
   - Nuevas características, cambios arquitectónicos, correcciones críticas
   - PR completo con revisión detallada y aprobaciones requeridas
-
----
-
-## Beneficios
-
-- Mayor velocidad de desarrollo
-- Responsabilidad distribuida en el equipo
-- Enfoque de revisión donde realmente importa
-- Reducción de cuellos de botella en revisiones
 
 ---
 
